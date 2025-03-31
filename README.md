@@ -8,14 +8,16 @@ To start your Phoenix server:
   * Run `mix setup` to install and setup dependencies, and to seed the database
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Now you can make HTTP requests to create and query Events and claim Tickets.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+Events:
+  * `curl localhost:4000/event`
+  * `curl localhost:4000/event/:id`
+  * `curl -H 'Content-Type: application/json' \
+     -d '{ "name": "test event", "event_type_id": "1", "venue_id": "1", "start_datetime": "2026-12-12T18:00:00Z", "end_datetime": "2026-12-12T20:00:00Z", "performers": ["1", "2"], "status": "scheduled" } ' \
+     -X POST localhost:4000/event`
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+Tickets:
+  * ` curl -H 'Content-Type: application/json' \
+     -d '{ "owner": {"user": "1"}, "id": "1" } ' \
+     -X POST localhost:4000/ticket/claim`
