@@ -1,8 +1,8 @@
 # Sicktix
 
 Prerequisites:
-  * [`Elixir`](https://elixir-lang.org/install.html)
-  * [`Docker`](https://www.docker.com/get-started/)
+  * [Elixir](https://elixir-lang.org/install.html)
+  * [Docker](https://www.docker.com/get-started/)
 
 To set up database:
   * Run `docker run --name sicktix-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432 -d postgres`
